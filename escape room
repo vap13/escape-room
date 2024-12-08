@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Room</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .hidden { display: none; }
+    .room { margin: 20px; }
+    .success { color: green; font-size: 1.5em; }
+  </style>
+</head>
+<body>
+  <div id="room1" class="room">
+    <h2>Level 1: Cells</h2>
+    <p>Identify the fighter: "This type of WBC acts like a vacuum cleaner."</p>
+    <input type="text" id="answer1" placeholder="Your Answer">
+    <button onclick="checkAnswer('answer1', 'phagocyte', 'room2')">Submit</button>
+  </div>
+
+  <div id="room2" class="room hidden">
+    <h2>Level 2: Anatomy and Joints</h2>
+    <p>This bone connects your shoulder to your elbow and sounds like 'funny.'</p>
+    <input type="text" id="answer2" placeholder="Your Answer">
+    <button onclick="checkAnswer('answer2', 'humerus', 'room3')">Submit</button>
+  </div>
+
+  <div id="room3" class="room hidden">
+    <h2>Level 3: Natural Defense Mechanisms</h2>
+    <p>I’m small and mighty, and without me, life’s out of sight. I capture the sun and create energy bright. Who am I?</p>
+    <input type="text" id="answer3" placeholder="Your Answer">
+    <button onclick="checkAnswer('answer3', 'chloroplast', 'success')">Submit</button>
+  </div>
+
+  <div id="success" class="hidden">
+    <h2 class="success">Congratulations! You've unlocked the secrets of life!</h2>
+  </div>
+
+  <script>
+    function checkAnswer(inputId, correctAnswer, nextRoomId) {
+      const userAnswer = document.getElementById(inputId).value.toLowerCase();
+      if (userAnswer === correctAnswer) {
+        document.getElementById(inputId).parentNode.classList.add('hidden');
+        document.getElementById(nextRoomId).classList.remove('hidden');
+      } else {
+        alert("Try again!");
+      }
+    }
+  </script>
+</body>
+</html>
